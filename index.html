@@ -4,23 +4,39 @@
     <meta charset="utf-8">
     <title>Polypost</title>
     <script src="bower_components/webcomponentsjs/webcomponents.js"></script>
-    <!-- <link rel="import" href="bower_components/polymer/polymer.html"> -->
     <link rel="import" href="elements/extras.html">
     <link rel="stylesheet" href="app.css">
 
   </head>
 
-  <body fullbleed layout vertical>
-    <core-header-panel flex>
+<body fullbleed layout vertical>
+  <template is="auto-binding" id="tmpl">
+    <core-drawer-panel id="drawerPanel">
+    <core-header-panel drawer>
+        <core-toolbar>Menu</core-toolbar>
+        <core-menu selected="{{selected}}">
+          <core-item label="One"></core-item>
+          <core-item label="Two"></core-item>
+        </core-menu>
+    </core-header-panel>
+    <core-header-panel main>
       <core-toolbar>
-      <paper-icon-button icon="menu"></paper-icon-button>
-        <div>My Polymer</div>
+      <paper-icon-button core-drawer-toggle icon="menu"></paper-icon-button>
+        <div>{{heading}}</div>
         <span flex></span>
         <paper-icon-button icon="search"></paper-icon-button>
       </core-toolbar>
-      <div class="content">"EMILY WANTS A HUG"</div>
+      <div class="content">
+        "EMILY WANTS A HUG on page: {{selected}}"
+      </div>
     </core-header-panel>
+  </core-drawer-panel>
+  </template>
 
-  </body>
+
+
+
+  <script src="app.js"></script>
+</body>
 
 </html>
